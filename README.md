@@ -90,7 +90,6 @@ financial-qa/
 ```
 
 This project is licensed under the MIT License.
-Free to use, modify, and distribute this software for both personal and commercial purposes, provided that proper attribution is given.
 
 
 
