@@ -19,15 +19,15 @@ A local, privacy-preserving question-answering system for financial documents us
 
 ### Main Chat Interface
 
-![Chat UI](Images/interface_ui.png)
+![Chat UI](images/interface_ui.png)
 
 ### Example Query 1
 
-![Example 1](Images/example1.png)
+![Example 1](images/example1.png)
 
 ### Example Query 2
 
-![Example 2](Images/example2.png)
+![Example 2](images/example2.png)
 
 ---
 
@@ -87,7 +87,7 @@ financial-qa/
 ## LICENSE
 ```
 
----
+```
 
 This project is licensed under the MIT License.
 Free to use, modify, and distribute this software for both personal and commercial purposes, provided that proper attribution is given.
