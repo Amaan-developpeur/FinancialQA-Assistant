@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Financial Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="chat-container">
+    <div id="header"><h1>Financial Q&A Assistant</h1></div>
+    <div id="chat-window"></div>
+    <div id="input-area">
+      <textarea id="user-input" placeholder="Ask anything about financial reports..." rows="1"></textarea>
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script src="/static/script.js"></script>
+<footer>
+      <div class="section__container">
+        <h4>Falcon Bank of Hyderabad</h4>
+        <div class="social__icons">
+          <span><i class="ri-facebook-fill"></i></span>
+          <span><i class="ri-twitter-fill"></i></span>
+          <span><i class="ri-instagram-line"></i></span>
+          <span><i class="ri-linkedin-fill"></i></span>
+        </div>
+        <p>
+          "A Multi-document Financial Q&A system, backed by vector search + LLM, which can answer your concerns and quries about the
+Falcon Banking Firm."
+        </p>
+      </div>
+    </footer>
+</body>
+</html>
+
+
