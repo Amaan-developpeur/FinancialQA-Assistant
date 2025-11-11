@@ -2,6 +2,9 @@
 **Retrieval-Augmented Generation System for Financial Document Intelligence**  
 _End-to-end RAG platform for financial document understanding and Q&A automation._
 
+> **Previous release:** [Version 1 (Baseline RAG Prototype)](https://github.com/Amaan-developpeur/FinancialQA-Assistant/tree/main)
+
+
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
 ![Ollama](https://img.shields.io/badge/Ollama-LLM-orange)
