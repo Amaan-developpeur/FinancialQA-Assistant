@@ -1,21 +1,7 @@
-# Python
 __pycache__/
 *.pyc
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Environments
+data/*
+!data/vector_store/.gitkeep
+logs/
+.env
 .venv/
-env/
-*.env
-
-# OS
-.DS_Store
-Thumbs.db
-
-# VSCode
-.vscode/
-
-# Misc
-*.egg-info/
