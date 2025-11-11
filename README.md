@@ -1,3 +1,6 @@
+> **Looking for the latest build?**  
+> Check out [Version 2 (Production-grade RAG System)](https://github.com/Amaan-developpeur/FinancialQA-Assistant/tree/v2)
+
 # FinancialQA-Assistant
 
 A local, privacy-preserving question-answering system for financial documents using FastAPI, sentence-transformers, and Ollama Mistral. The system extracts content from raw PDFs, performs semantic search over chunked embeddings, and returns precise answers with a clean HTML UI.
