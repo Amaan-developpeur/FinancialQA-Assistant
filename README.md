@@ -3,14 +3,6 @@
 _End-to-end RAG platform for financial document understanding and Q&A automation._
 
 > **Previous release:** [Version 1 (Baseline RAG Prototype)](https://github.com/Amaan-developpeur/FinancialQA-Assistant/tree/main)
-
-
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![Ollama](https://img.shields.io/badge/Ollama-LLM-orange)
-![ChromaDB](https://img.shields.io/badge/Chroma-VectorDB-purple)
-![SentenceTransformer](https://img.shields.io/badge/SBERT-Embeddings-yellow)
-
 ---
 
 ## Live UI Preview
@@ -20,7 +12,15 @@ _End-to-end RAG platform for financial document understanding and Q&A automation
 ---
 
 ## Overview
-**Financial QA Assistant v2** is a production-grade RAG pipeline that answers domain-specific questions from large financial PDFs — annual reports, statements, or disclosures.
+A local Retrieval-Augmented Generation (RAG) system for asking questions over financial PDFs (annual reports, statements, disclosures). The goal is to demonstrate **practical RAG system design**, not to build a production financial advisor.
+
+---
+
+## What It Does
+
+Users ask questions in natural language.  
+The system retrieves relevant parts of financial documents and then uses a local LLM to generate an answer grounded in that text.
+---
 
 ### System Flow
 ```
@@ -36,16 +36,16 @@ Built with:
 
 ---
 
-## Key Improvements in v2
-| Layer | v1 (Old) | v2 (New) | Result |
-|-------|-----------|-----------|---------|
-| **Extraction** | Single-thread pdfplumber | Parallel extraction + error isolation | 10× faster ingestion |
-| **Vector Store** | In-memory cosine | Persistent ChromaDB (ANN) | 1000× faster retrieval |
-| **Embeddings** | On-the-fly per query | Pre-computed MiniLM embeddings | 99% latency reduction |
-| **Prompt Build** | Static text join | Context-aware metadata prompt | Deterministic grounding |
-| **LLM Call** | Blocking Ollama call | Streaming endpoint w/ latency tracking | Interactive UX |
-| **Frontend** | CLI only | Live web UI with streamed output | Real-time answers |
-| **Observability** | Console prints | Structured logs + metrics | Production-grade visibility |
+## V1 vs V2
+**v1**
+- Modular code, structured extraction and embedding
+- Pandas + numpy-based retrieval
+- No persistent vector database
+
+**v2**
+- Persistent Chroma vector store
+- Parallel PDF extraction
+- Precomputed embeddings
 
 ---
 
@@ -87,15 +87,15 @@ Then open → [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 ---
 
-## Performance Snapshot
+### Performance Notes
 
-| Stage | Avg Latency | Hardware | Notes |
-|-------|--------------|-----------|--------|
-| Extraction (8 PDFs) | ≈ 3 min | CPU | Parallel worker pool |
-| Embedding (3K chunks) | < 60 s | CPU | Batch size 32 |
-| Vector Retrieval | 300 ms | CPU | Chroma HNSW ANN |
-| LLM Generation | 60–70 s | CPU | Use phi3 → < 6 s |
-| Full Pipeline | ≈ 66 s (CPU) → < 5 s (GPU) | — | LLM dominates latency |
+Performance is tied to local setup and LLM inference, not just retrieval. Typical behavior on CPU:
+
+- Vector search: sub-second
+- Prompt construction: negligible
+- Local LLM response: tens of seconds
+
+Improvements in v2 target: **scalability and modular design**
 
 ---
 
@@ -112,59 +112,9 @@ Then open → [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 ---
 
-## Architectural Evolution
 
-> **From a monolithic script → modular RAG system.**
 
-**Key shifts:**
-- Added **parallel ingestion** → 10× faster extraction  
-- Moved to **persistent Chroma vector store**  
-- Pre-computed embeddings for reuse  
-- Real-time **token streaming**  
-- **Structured latency metrics + error isolation**  
-- Interactive **frontend for live inference**
 
-**Outcome:**
-- Query latency: **180 s → 0.6 s**  
-- Ingestion time: **20 min → 3 min**  
-- Reliability: **↑ 99.9 %**  
-- Full **incremental re-ingestion pipeline**
 
----
 
-## Engineering Principles
 
-| Principle | Implementation |
-| ---------- | --------------- |
-| **Separation of Concerns** | Each module has a single responsibility |
-| **Idempotence** | Re-ingestion skips existing vectors |
-| **Persistence** | Chroma + CSV state survive restarts |
-| **Observability** | Structured logs + latency tracking |
-| **Extensibility** | Swap models or extractors without rewrites |
-
----
-
-## Results Summary
-
-| Metric | Old | New | Gain |
-| ------- | ---- | ---- | ---- |
-| Extraction Time | ~20 min | 3 min | 6.6× faster |
-| Query Latency | 180 s | 0.6 s (vector) | 300× faster |
-| Reliability | 70 % | 99.9 % | Stable |
-| UX Feedback | CLI | Streaming UI | Instant |
-
----
-
-## Why It Matters
-
-This project demonstrates **full-stack mastery of RAG architecture** — from text extraction and vector indexing to model serving and real-time UI streaming.  
-It’s modular, measurable, and deployable — the kind of foundation that powers **financial analyst copilots**, **document intelligence systems**, and **enterprise AI search platforms**.
-
----
-
-### Summary
-
-**Financial QA Assistant v2** isn’t a toy RAG — it’s a *production-ready, locally deployable AI system* built with clear architectural discipline, high observability, and lightning-fast retrieval.  
-Plug in any financial PDF, and it just works — answering questions in seconds, grounded in actual text.
-
----
